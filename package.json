@@ -1,0 +1,14 @@
+{
+  "name": "gdax-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Austin Pearce <austinpearce1005@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "gdax": "^0.4.2"
+  }
+}

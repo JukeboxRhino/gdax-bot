@@ -1,14 +1,14 @@
 /*jshint esversion: 6 */
 
 /*******BEGIN CONFIG*******/
-const amountToBuy = 1500; //Amount to buy, IN CENTS, NOT DOLLARS;
+const amountToBuy = 15; //Amount to buy, in dollars;
 const apiKey = '';
 const apiSecret = '';
 const passphrase = '';
 
 //When to buy
-const hour = 16; //Remember to use 24 hour time
-const minute = 20;
+const hour = 15; //Remember to use 24 hour time
+const minute = 03;
 const second = 0;
 /********END CONFIG********/
 
@@ -53,12 +53,11 @@ function placeOrder(size) {
 function buyEth() {
     refreshPrice(function(err, price) {
         if(!err) {
+            price = parseFloat(price);
             console.log('-----------------------------------');
-            console.log(`Latest ask price is $${parseFloat(price).toFixed(2)} USD/ETH`);
-            price = Math.floor(parseFloat(price) * 100); //Converts price into an integer in cents
-            assert(Number.isInteger(price), 'Assert failed: variable price did not hold an integer value');
+            console.log(`Latest ask price is $${price.toFixed(2)} USD/ETH`);
             let size = (amountToBuy / price).toFixed(8);
-            console.log(`Buying $${amountToBuy/100} worth of ETH (${size} ETH)`);
+            console.log(`Buying $${amountToBuy.toFixed(2)} worth of ETH (${size} ETH)`);
             placeOrder(size);
         } else {
             console.log('Error getting price. Retrying in 60s.');
